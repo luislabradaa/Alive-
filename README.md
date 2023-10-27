@@ -12,8 +12,8 @@
 
 ## Tabla de contenido
 
-- [Planeación del proyecto](#planeación-del-proyecto)
-- [Lecciones de Unity 3D](#lecciones-de-Unity-3D)
+- [Planeación del proyecto (Trello)](#planeación-del-proyecto-trello)
+- [Lecciones de Unity 3D](#lecciones-de-unity-3d)
   - [Basic Gameplay](#basic-gameplay)
   - [Efectos y Sonido](#efectos-y-sonido)
   - [Mechanics](#mechanics)
@@ -33,7 +33,7 @@
 ## Lecciones de Unity 3D
 - ###  Basic Gameplay
 ![image](https://github.com/Pedro-gd/Alive/assets/87114168/d7a80d28-7290-4c50-986e-3d994607cc90)
-  - [Carpeta en Repositorio](https://github.com/Pedro-gd/Alive/tree/main/Basic%20GamePlay)
+  - [Carpeta en Repositorio](https://github.com/luislabradaa/Alive-/tree/main/Basic%20GamePlay)
   - #### Videos
     - https://drive.google.com/drive/folders/18RXgFvBJ70ofEorfo9V8ay_V5IhHX29o 
   - #### Descripción
@@ -43,7 +43,7 @@ En esta unidad, programarás un juego de vista aérea con el objetivo de lanzar 
 
 - ###  Sonido y Efectos
   ![image](https://github.com/Pedro-gd/Alive/assets/87114168/e2b69117-a56a-4ddd-bc0b-9243ee1caf79)
-- [Carpeta en Repositorio](https://github.com/Pedro-gd/Alive/tree/main/Sonido%20y%20Efectos)
+- [Carpeta en Repositorio](https://github.com/luislabradaa/Alive-/tree/main/Sonido%20y%20Efectos)
 - #### Videos
   - https://drive.google.com/drive/folders/18RXgFvBJ70ofEorfo9V8ay_V5IhHX29o 
 - #### Descripción
