@@ -21,6 +21,18 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene("Nivel1");
     }
 
+    public void Nivel1(){
+        SceneManager.LoadScene("Nivel1");
+    }
+
+    public void Nivel2(){
+        SceneManager.LoadScene("Nivel2"); 
+    }
+
+     public void FinJuego(){
+        SceneManager.LoadScene("FinalJuego");  //FinalJuego
+    }
+
     public void Salir(){
         Application.Quit();
     }
