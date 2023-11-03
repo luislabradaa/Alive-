@@ -51,6 +51,13 @@ En esta unidad, programarás un juego de vista aérea con el objetivo de lanzar 
 En esta Unidad programarás un juego de desplazamiento lateral infinito de gran velocidad donde el jugador necesita sincronizar sus saltos sobre obstáculos para evitar chocar. Al crear este prototipo, aprenderás sobre cómo agregar música y efectos de sonido para transformar por completo la experiencia de tus proyectos. También aprenderás a crear fondos infinitos dinámicos repetibles, que son cruciales para cualquier juego de desplazamiento lateral. Por último, aprenderás a incorporar efectos de partículas como salpicaduras y explosiones, los cuales harán que la jugabilidad de tus juegos sea mucho más satisfactoria.  
 </p>
 
-- ###  Efectos y Sonido
 - ###  Mechanics
+   ![image](https://github.com/luislabradaa/Alive-/assets/80784527/f590a629-0c46-4396-94a8-8d45b72b677e)
+- [Carpeta en Repositorio](https://github.com/luislabradaa/Alive-/tree/develop/Mechanics/Mecanicas)
+- #### Videos
+  -  https://drive.google.com/drive/folders/18RXgFvBJ70ofEorfo9V8ay_V5IhHX29o
+- #### Descripción
+<p align="justify">
+En esta Unidad, programarás un juego de combate Sumo tipo arcade cuyo objetivo es derribar oleadas de enemigos de dificultad en aumento desde una isla flotante con ayuda de potenciadores. Al crear este prototipo, aprenderás a implementar nuevas mecánicas de jugabilidad a tus proyectos, las cuales son nuevas reglas o sistemas que hacen que tu juego sea más interesante para jugar. Por un lado, aprenderás a programar un potenciador, el cual otorga al jugador una ventaja momentánea. Por otro lado, aprenderás a programar oleadas de enemigos de dificultad en aumento, lo cual hará que la supervivencia del jugador sea cada vez más desafiante. Un buen equilibrio entre potenciadores y dificultades crea una experiencia de jugabilidad mucho más interesante.  
+</p>
 - ###  Interfaz del Usuario
