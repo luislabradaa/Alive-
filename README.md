@@ -60,4 +60,15 @@ En esta Unidad programarás un juego de desplazamiento lateral infinito de gran 
 <p align="justify">
 En esta Unidad, programarás un juego de combate Sumo tipo arcade cuyo objetivo es derribar oleadas de enemigos de dificultad en aumento desde una isla flotante con ayuda de potenciadores. Al crear este prototipo, aprenderás a implementar nuevas mecánicas de jugabilidad a tus proyectos, las cuales son nuevas reglas o sistemas que hacen que tu juego sea más interesante para jugar. Por un lado, aprenderás a programar un potenciador, el cual otorga al jugador una ventaja momentánea. Por otro lado, aprenderás a programar oleadas de enemigos de dificultad en aumento, lo cual hará que la supervivencia del jugador sea cada vez más desafiante. Un buen equilibrio entre potenciadores y dificultades crea una experiencia de jugabilidad mucho más interesante.  
 </p>
-- ###  Interfaz del Usuario
+
+- ### Interfaz del usuario
+   ![image](https://github.com/luislabradaa/Alive-/assets/87114168/a9d58869-8111-4b11-b27f-f730a15dada8)
+- [Carpeta en Repositorio](https://github.com/luislabradaa/Alive-/tree/main/Interfaz%20de%20Usuario)
+- #### Videos
+  -  https://drive.google.com/drive/folders/18RXgFvBJ70ofEorfo9V8ay_V5IhHX29o
+- #### Descripción
+<p align="justify">
+En esta Unidad programarás un juego para probar los reflejos del jugador, en el cual el objetivo es hacer clic y destruir objetos lanzados por el aire aleatoriamente antes de que caigan y desaparezcan por la parte inferior de la pantalla. Al crear este prototipo, aprenderás a implementar una interfaz de usuario (UI) en tus proyectos. Agregarás una pantalla de título con un menú de selección de dificultad que controlará el nivel de desafío de la jugabilidad, agregarás un monitor de puntaje que dará seguimiento a los puntos que ha obtenido el jugador y agregarás una pantalla de Fin del juego que permitirá a los jugadores reiniciar y intentar de nuevo. Al aprender estas habilidades, podrás crear una experiencia «jugable» completa que el usuario puede disfrutar de inicio a fin sin tener que reiniciar la aplicación para intentarlo de nuevo. 
+</p>
+
+
