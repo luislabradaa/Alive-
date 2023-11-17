@@ -83,7 +83,7 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
 
-       vidaVisual.value = vidaPlayer;
+       //vidaVisual.value = vidaPlayer;
 
         transform.Translate(0, 0, Input.GetAxis("Vertical") * speed * Time.deltaTime);
         transform.Rotate(0, Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime, 0);
