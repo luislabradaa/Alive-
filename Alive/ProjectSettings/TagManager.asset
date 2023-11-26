@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Key
   - point
+  - point2
+  - point3
   layers:
   - Default
   - TransparentFX
