@@ -11,8 +11,7 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemyRb = GetComponent<Rigidbody>();
-        player = GameObject.Find("Cube");
+
     }
 
     // Update is called once per frame

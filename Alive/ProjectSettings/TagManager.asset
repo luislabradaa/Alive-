@@ -8,6 +8,8 @@ TagManager:
   - point
   - Enemy
   - Salida
+  - point2
+  - point3
   layers:
   - Default
   - TransparentFX
