@@ -54,6 +54,15 @@ public class CharacterController : MonoBehaviour
             score += 10;
             Destroy(other.gameObject);
         }
+
+        //Condición gameover
+        if (other.gameObject.tag == "Enemy"){
+            SceneManager.LoadScene("MenuAlive");
+        }
+        //Condición gana partida
+        if (other.gameObject.tag == "Salida"){
+            SceneManager.LoadScene("MenuAlive");
+        }
     }
 
     void OnTriggerExit(Collider other)
