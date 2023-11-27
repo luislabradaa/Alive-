@@ -11,8 +11,7 @@ using System;
 public class CharacterController : MonoBehaviour
 {
 
-    public int vidaPlayer = 100;
-    public Slider vidaVisual;
+    private int vidaPlayer = 100;
     public float speed = 5.0F; //Velocidad de movimiento
     public float rotationSpeed = 100.0F; //Velocidad de rotación
     public AudioSource pasos;
@@ -34,6 +33,10 @@ public class CharacterController : MonoBehaviour
 
     private IMongoCollection<BsonDocument> collection;
 
+    public Slider visualSlider;
+
+
+
     void Start()
     {
 
@@ -43,6 +46,7 @@ public class CharacterController : MonoBehaviour
         collection = db.GetCollection<BsonDocument>("player");
         name = MenuController.nombreJugador;
         Debug.Log("El nombre es:" + name);
+        score = 0;
         // Obtener todos los documentos de la colección "player"
         var sortedDocuments = collection.Find(new BsonDocument())
             .Sort(Builders<BsonDocument>.Sort.Descending("Puntuacion"))
@@ -56,9 +60,11 @@ public class CharacterController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        vidaPlayer = 50;
         if (other.gameObject.tag == "Key")
         {
             HasKey = true;
+            vidaPlayer = 0;
             playerInTrigger = true;
         }
 
@@ -90,7 +96,19 @@ public class CharacterController : MonoBehaviour
         {
             playerInTrigger = false;
             Destroy(other.gameObject);
-            SceneManager.LoadScene("FinalJuego", LoadSceneMode.Single);
+            //Scene escenaActual = SceneManager.GetActiveScene();
+            //UnityEditor.EditorApplication.isPlaying = false;
+            SceneManager.LoadScene("FinalJuego");
+            score = 0;
+            Puntaje.puntos = score;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            // Destruimos la escena actual
+
+
+            // Cargamos la nueva escena
+            //SceneManager.LoadScene("FinalJuego");
+            //SceneManager.LoadScene("FinalJuego", LoadSceneMode.Single);
             //var document = new BsonDocument { { "Nombre", name }, { "Puntuacion", score } };
             //collection.InsertOne(document);
         }
@@ -103,7 +121,15 @@ public class CharacterController : MonoBehaviour
         {
             string message = "Has encontrado la llave";
 
-            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 150, 30), message);
+            // Set the font size to 30 points
+            Font font = Font.CreateDynamicFontFromOSFont("Arial", 30);
+            // Assign the font to the GUI skin
+            GUI.skin.font = font;
+
+            // Set the text color to red
+            GUI.color = Color.red;
+
+            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 459, 90), message);
         }
     }
 
@@ -111,6 +137,7 @@ public class CharacterController : MonoBehaviour
     {
 
         //vidaVisual.value = vidaPlayer;
+        visualSlider.GetComponent<Slider>().value = vidaPlayer;
 
         transform.Translate(0, 0, Input.GetAxis("Vertical") * speed * Time.deltaTime);
         transform.Rotate(0, Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime, 0);
