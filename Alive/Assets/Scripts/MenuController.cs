@@ -2,9 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using System;
 
 public class MenuController : MonoBehaviour
 {
+
+    public static string nombreJugador;
+
+    public void capturaNombre(String nombre){
+        nombreJugador = nombre;
+        Debug.Log(nombreJugador);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,8 +42,14 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene("FinalJuego");  //FinalJuego
     }
 
+     public void Menu(){
+        SceneManager.LoadScene("MenuAlive");  //FinalJuego
+    }
+
     public void Salir(){
         Application.Quit();
     }
+
+    
 
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using UnityEngine.UI;
+using System;
 
 
 public class CharacterController : MonoBehaviour
@@ -12,14 +13,15 @@ public class CharacterController : MonoBehaviour
 
     public int vidaPlayer = 100;
     public Slider vidaVisual;
-    public float speed = 10.0F; //Velocidad de movimiento
-    public float rotationSpeed = 200.0F; //Velocidad de rotación
+    public float speed = 5.0F; //Velocidad de movimiento
+    public float rotationSpeed = 100.0F; //Velocidad de rotación
     public AudioSource pasos;
     private bool Hactivo; // Horizontal sonido
     private bool Vactivo; // Vertical sonido
     public bool HasKey;
 
-    private int score = 0;
+    private String name;
+    public static int score = 0;
     private bool playerInTrigger;
 
     private Rigidbody playerRb;
@@ -32,13 +34,24 @@ public class CharacterController : MonoBehaviour
 
     private IMongoCollection<BsonDocument> collection;
 
-
     void Start()
     {
+
         playerRb = GetComponent<Rigidbody>();
         client = new MongoClient("mongodb+srv://unity:unity@cluster0.6tl1aef.mongodb.net/?retryWrites=true&w=majority");
         db = client.GetDatabase("Uniry");
         collection = db.GetCollection<BsonDocument>("player");
+        name = MenuController.nombreJugador;
+        Debug.Log("El nombre es:" + name);
+        // Obtener todos los documentos de la colección "player"
+        var sortedDocuments = collection.Find(new BsonDocument())
+            .Sort(Builders<BsonDocument>.Sort.Descending("Puntuacion"))
+            .ToList();
+        // Iterar sobre los documentos e imprimirlos en la consola
+        foreach (var document in sortedDocuments)
+        {
+            Debug.Log(document.ToString());
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -52,6 +65,21 @@ public class CharacterController : MonoBehaviour
         if (other.gameObject.tag == "point")
         {
             score += 10;
+            Puntaje.puntos = score;
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.tag == "point2")
+        {
+            score += 20;
+            Puntaje.puntos = score;
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.tag == "point3")
+        {
+            score += 30;
+            Puntaje.puntos = score;
             Destroy(other.gameObject);
         }
     }
@@ -62,10 +90,9 @@ public class CharacterController : MonoBehaviour
         {
             playerInTrigger = false;
             Destroy(other.gameObject);
-            //SceneManager.LoadScene("Nivel2");
-            var document = new BsonDocument { { "Nombre", "Pedro" }, { "Puntuacion", score } };
-            collection.InsertOne(document);
-            Debug.Log("Insertando Score");
+            SceneManager.LoadScene("FinalJuego", LoadSceneMode.Single);
+            //var document = new BsonDocument { { "Nombre", name }, { "Puntuacion", score } };
+            //collection.InsertOne(document);
         }
     }
 
@@ -83,7 +110,7 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
 
-       vidaVisual.value = vidaPlayer;
+        //vidaVisual.value = vidaPlayer;
 
         transform.Translate(0, 0, Input.GetAxis("Vertical") * speed * Time.deltaTime);
         transform.Rotate(0, Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime, 0);
