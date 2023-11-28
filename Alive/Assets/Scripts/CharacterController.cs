@@ -19,7 +19,9 @@ public class CharacterController : MonoBehaviour
     private bool Vactivo; // Vertical sonido
     public bool HasKey;
 
-    private String name;
+    public static int nivel;
+
+    public static String name;
     public static int score = 0;
     private bool playerInTrigger;
 
@@ -46,7 +48,7 @@ public class CharacterController : MonoBehaviour
         collection = db.GetCollection<BsonDocument>("player");
         name = MenuController.nombreJugador;
         Debug.Log("El nombre es:" + name);
-        score = 0;
+        HasKey = false;
         // Obtener todos los documentos de la colección "player"
         var sortedDocuments = collection.Find(new BsonDocument())
             .Sort(Builders<BsonDocument>.Sort.Descending("Puntuacion"))
@@ -60,11 +62,16 @@ public class CharacterController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        //vidaPlayer = 50;
         if (other.gameObject.tag == "Key")
         {
             HasKey = true;
-            //vidaPlayer = 0;
+            nivel = 1;
+            playerInTrigger = true;
+        }
+
+        if (other.gameObject.tag == "Key2")
+        {
+            HasKey = true;
             playerInTrigger = true;
         }
 
@@ -90,28 +97,54 @@ public class CharacterController : MonoBehaviour
         }
 
         //Condición gameover
-        if (other.gameObject.tag == "Enemy"){
-            SceneManager.LoadScene("MenuAlive");
-        }
-        //Condición gana partida
-        if (other.gameObject.tag == "Salida"){
-            SceneManager.LoadScene("MenuAlive");
+        if (other.gameObject.tag == "Enemy")
+        {
+            //SceneManager.LoadScene("FinalJuego");
+
+
+            if (vidaPlayer == 50)
+            {
+                vidaPlayer = 0;
+            }
+            else
+            {
+                vidaPlayer = 50;
+            }
+
+            if (vidaPlayer == 0)
+            {
+                Debug.Log("Mamaste hijo");
+                SceneManager.LoadScene("FinalJuego");
+                score = 0;
+                Puntaje.puntos = score;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+
         }
     }
 
     void OnTriggerExit(Collider other)
     {
+
+
+        if (other.gameObject.tag == "Key2")
+        {
+            playerInTrigger = false;
+            Destroy(other.gameObject);
+        }
         if (other.gameObject.tag == "Key")
         {
             playerInTrigger = false;
             Destroy(other.gameObject);
+            nivel=nivel+1;
             //Scene escenaActual = SceneManager.GetActiveScene();
             //UnityEditor.EditorApplication.isPlaying = false;
-            //SceneManager.LoadScene("FinalJuego");
             //score = 0;
-            Puntaje.puntos = score;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            //Puntaje.puntos = score;
+            //Cursor.lockState = CursorLockMode.None;
+            //Cursor.visible = true;
+            SceneManager.LoadScene("Nivel2");
             // Destruimos la escena actual
 
 
@@ -138,7 +171,7 @@ public class CharacterController : MonoBehaviour
             // Set the text color to red
             GUI.color = Color.red;
 
-            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 459, 90), message);
+            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 400, 459, 90), message);
         }
     }
 

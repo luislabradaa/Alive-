@@ -12,19 +12,27 @@ public class IA_Enemigo : MonoBehaviour
     public Animation Anim;
     public string animacionCaminar;
     public string animacionAtacar;
-    
+
 
     // Update is called once per frame
     void Update()
     {
-        IA.speed = Velocidad;
-        IA.SetDestination(Objetivo.position);
 
-       /* if(IA.velocity == Vector3.zero){
-            Anim.CrossFade(animacionAtacar);
+        if (linternaController.bandera == true)
+        {
+            IA.speed = Velocidad;
+            IA.SetDestination(Objetivo.position);
+            //Debug.Log("Entro enemigo");
         }else{
-            Anim.CrossFade(animacionCaminar);
-        }*/
+            IA.SetDestination(Vector3.zero);
+             //Debug.Log("No Entro enemigo");
+        }
+
+        /* if(IA.velocity == Vector3.zero){
+             Anim.CrossFade(animacionAtacar);
+         }else{
+             Anim.CrossFade(animacionCaminar);
+         }*/
     }
 
     /*public void Ataque(){
