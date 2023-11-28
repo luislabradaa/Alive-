@@ -19,6 +19,7 @@ public class PuertaController : MonoBehaviour
     {
         defaultRotation = transform.eulerAngles;
         openRotation = new Vector3(defaultRotation.x, defaultRotation.y + doorOpenAngle, defaultRotation.z);
+        GUI.skin = Resources.Load("MyGUISkin") as GUISkin;
     }
 
     void Update()
@@ -43,6 +44,14 @@ public class PuertaController : MonoBehaviour
 
     void OnGUI()
     {
+
+        Font font = Font.CreateDynamicFontFromOSFont("Arial", 30);
+        // Assign the font to the GUI skin
+        GUI.skin.font = font;
+
+        // Set the text color to red
+        GUI.color = Color.red;
+        
         if (playerInTrigger)
         {
             string message = "Press 'F' to open the door";
@@ -52,7 +61,7 @@ public class PuertaController : MonoBehaviour
                 message = "Neceistas una llave";
             }
 
-            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 150, 30), message);
+            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 400, 150, 30), message);
         }
     }
 

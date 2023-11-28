@@ -10,6 +10,7 @@ TagManager:
   - Salida
   - point2
   - point3
+  - Key2
   layers:
   - Default
   - TransparentFX
