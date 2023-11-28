@@ -11,6 +11,8 @@ TagManager:
   - point2
   - point3
   - Key2
+  - personajeSecundario
+  - Terreno
   layers:
   - Default
   - TransparentFX
