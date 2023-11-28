@@ -10,6 +10,8 @@ TagManager:
   - Salida
   - point2
   - point3
+  - personajeSecundario
+  - Terreno
   layers:
   - Default
   - TransparentFX

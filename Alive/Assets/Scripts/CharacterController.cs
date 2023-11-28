@@ -60,11 +60,11 @@ public class CharacterController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        vidaPlayer = 50;
+        //vidaPlayer = 50;
         if (other.gameObject.tag == "Key")
         {
             HasKey = true;
-            vidaPlayer = 0;
+            //vidaPlayer = 0;
             playerInTrigger = true;
         }
 
@@ -107,8 +107,8 @@ public class CharacterController : MonoBehaviour
             Destroy(other.gameObject);
             //Scene escenaActual = SceneManager.GetActiveScene();
             //UnityEditor.EditorApplication.isPlaying = false;
-            SceneManager.LoadScene("FinalJuego");
-            score = 0;
+            //SceneManager.LoadScene("FinalJuego");
+            //score = 0;
             Puntaje.puntos = score;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

@@ -45,11 +45,11 @@ public class PuertaController : MonoBehaviour
     {
         if (playerInTrigger)
         {
-            string message = "Press 'F' to open the door";
+            string message = "Presiona 'F' para abrir la puerta";
 
             if (!playerHasKey)
             {
-                message = "Neceistas una llave";
+                message = "Necesitas una llave";
             }
 
             GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 150, 30), message);
