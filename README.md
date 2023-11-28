@@ -53,7 +53,7 @@ En esta Unidad programarás un juego de desplazamiento lateral infinito de gran 
 
 - ###  Mechanics
    ![image](https://github.com/luislabradaa/Alive-/assets/80784527/f590a629-0c46-4396-94a8-8d45b72b677e)
-- [Carpeta en Repositorio](https://github.com/luislabradaa/Alive-/tree/develop/Mechanics/Mecanicas)
+- [Carpeta en Repositorio](https://github.com/luislabradaa/Alive-/tree/main/Mechanics)
 - #### Videos
   -  https://drive.google.com/drive/folders/18RXgFvBJ70ofEorfo9V8ay_V5IhHX29o
 - #### Descripción
