@@ -102,8 +102,6 @@ public class CharacterController : MonoBehaviour
         //Condición gameover
         if (other.gameObject.tag == "Enemy")
         {
-            //SceneManager.LoadScene("FinalJuego");
-
 
             if (vidaPlayer == 50)
             {
@@ -116,7 +114,27 @@ public class CharacterController : MonoBehaviour
 
             if (vidaPlayer == 0)
             {
-                Debug.Log("Mamaste hijo");
+                Debug.Log("Muerte maniqui");
+                SceneManager.LoadScene("FinalJuego");
+                score = 0;
+                Puntaje.puntos = score;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+
+        }
+
+         if (other.gameObject.tag == "Enemy1")
+        {
+
+            if (vidaPlayer == 100 || vidaPlayer == 50)
+            {
+                vidaPlayer = 0;
+            }
+
+            if (vidaPlayer == 0)
+            {
+                Debug.Log("Muerte payaso");
                 SceneManager.LoadScene("FinalJuego");
                 score = 0;
                 Puntaje.puntos = score;
