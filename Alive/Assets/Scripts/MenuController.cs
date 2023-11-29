@@ -41,8 +41,9 @@ public class MenuController : MonoBehaviour
     }
 
     public void Nivel1(){
-         CharacterController.nivel =1;
+        CharacterController.nivel =1;
         SceneManager.LoadScene("Nivel1");
+        Debug.Log(nombreJugador);
     }
 
     public void Nivel2(){

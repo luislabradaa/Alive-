@@ -34,7 +34,7 @@ public class PuertaController2 : MonoBehaviour
         }
 
         // Only allow opening the door if player has the key and is in the trigger
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && playerHasKey)
         {
             isOpen = !isOpen;
         }
@@ -44,7 +44,12 @@ public class PuertaController2 : MonoBehaviour
     {
         if (playerInTrigger)
         {
-            string message = "Press 'F' to open the door";
+            string message = "NECESITAS LIBERAR A TU AMIGO";
+            if (CharacterController.HasKeycharacter == true)
+            {
+                message = "Press 'F' to open the door";
+            }
+            
 
             GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 400, 150, 30), message);
         }

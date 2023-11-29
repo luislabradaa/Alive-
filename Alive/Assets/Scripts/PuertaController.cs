@@ -19,7 +19,6 @@ public class PuertaController : MonoBehaviour
     {
         defaultRotation = transform.eulerAngles;
         openRotation = new Vector3(defaultRotation.x, defaultRotation.y + doorOpenAngle, defaultRotation.z);
-        GUI.skin = Resources.Load("MyGUISkin") as GUISkin;
     }
 
     void Update()
@@ -39,6 +38,7 @@ public class PuertaController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && playerInTrigger && playerHasKey)
         {
             isOpen = !isOpen;
+            CharacterController.HasKeycharacter = true;
         }
     }
 

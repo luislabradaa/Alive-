@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.008958812, g: 0.013101446, b: 0.02045097, a: 1}
+  m_IndirectSpecularColor: {r: 0.008916955, g: 0.013043514, b: 0.020362426, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11945,8 +11945,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1391620053}
-  - component: {fileID: 1391620052}
   - component: {fileID: 1391620051}
+  - component: {fileID: 1391620054}
   m_Layer: 0
   m_Name: Puerta2
   m_TagString: Untagged
@@ -11967,20 +11967,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.57, y: 1.22, z: 5.8}
   m_Center: {x: 0.7, y: 0.15, z: -0.42}
---- !u!114 &1391620052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1391620050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca41abc3326691f4487ad2c3429ff3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smooth: 2
-  doorOpenAngle: 90
 --- !u!4 &1391620053
 Transform:
   m_ObjectHideFlags: 0
@@ -11997,6 +11983,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 90.55, z: 0}
+--- !u!114 &1391620054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391620050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02c0e6a0c51ceeb48a480ac242e333d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smooth: 2
+  doorOpenAngle: 90
 --- !u!1 &1399594472 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2723168862239105267, guid: bf5b0d3de5f132a46bd5ee24e834d289, type: 3}
@@ -13587,14 +13587,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771249917}
-  m_LocalRotation: {x: 0.48711702, y: 0.44197956, z: -0.44516492, w: 0.6076177}
+  m_LocalRotation: {x: 0.651064, y: 0.28275272, z: -0.55997205, w: 0.4273149}
   m_LocalPosition: {x: 227.87, y: 8.28, z: 319.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 99.77899, y: 217.506, z: 139.465}
+  m_LocalEulerAnglesHint: {x: 119.181, y: 89.099, z: 13.085999}
 --- !u!64 &1773809304
 MeshCollider:
   m_ObjectHideFlags: 0

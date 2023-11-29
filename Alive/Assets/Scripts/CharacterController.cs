@@ -19,6 +19,8 @@ public class CharacterController : MonoBehaviour
     private bool Vactivo; // Vertical sonido
     public bool HasKey;
 
+    public static bool HasKeycharacter;
+
     public static int nivel;
 
     public static String name;
@@ -49,6 +51,7 @@ public class CharacterController : MonoBehaviour
         name = MenuController.nombreJugador;
         Debug.Log("El nombre es:" + name);
         HasKey = false;
+        HasKeycharacter = false;
         // Obtener todos los documentos de la colección "player"
         var sortedDocuments = collection.Find(new BsonDocument())
             .Sort(Builders<BsonDocument>.Sort.Descending("Puntuacion"))
