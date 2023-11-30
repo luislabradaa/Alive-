@@ -10,6 +10,8 @@ public class CameraMouseControl : MonoBehaviour
     private float rotationX = 0.0f;
     private float rotationY = 0.0f;
 
+    public Joystick joystick;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -18,6 +20,32 @@ public class CameraMouseControl : MonoBehaviour
 
     private void Update()
     {
+
+#if UNITY_ANDROID || UNITY_IOS
+
+        float joystickX = joystick.Horizontal;
+        float joystickY = joystick.Vertical;
+        float sensitivity = 2f;
+
+        float minXRotation = -70f; // Minima rotación en x
+        float maxXRotation = 30f;  // Maxima rotación en x
+        float minYRotation = -70f; // Minima rotación en y
+        float maxYRotation = 70f;  // Maxima rotación en y
+
+        rotationX -= joystickY * sensitivity;
+        rotationX = Mathf.Clamp(rotationX, minXRotation, maxXRotation);
+
+        rotationY += joystickX * sensitivity;
+        rotationY = Mathf.Clamp(rotationY, minYRotation, maxYRotation);
+
+        transform.localRotation = Quaternion.Euler(rotationX, rotationY, 0.0f);
+
+        if (target != null)
+        {
+            transform.position = target.position;
+        }
+
+#else
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
         float minXRotation = -70f; // Minima rotación en x
@@ -42,5 +70,6 @@ public class CameraMouseControl : MonoBehaviour
         {
             transform.position = target.position;
         }
+#endif
     }
 }

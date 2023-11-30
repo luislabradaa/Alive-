@@ -19,7 +19,9 @@ public class CharacterController : MonoBehaviour
     private bool Vactivo; // Vertical sonido
     public bool HasKey;
 
-    public static bool HasKeycharacter;
+    public bool HasKeycharacter;
+
+    public static bool HasKeycharacter2;
 
     public static int nivel;
 
@@ -38,6 +40,12 @@ public class CharacterController : MonoBehaviour
     private IMongoCollection<BsonDocument> collection;
 
     public Slider visualSlider;
+
+    public Joystick joystick;
+
+    private float y;
+
+    private float x;
 
 
 
@@ -70,11 +78,13 @@ public class CharacterController : MonoBehaviour
             HasKey = true;
             nivel = 1;
             playerInTrigger = true;
+            playerHasKey = true;
         }
 
         if (other.gameObject.tag == "Key2")
         {
-            HasKey = true;
+            HasKeycharacter =true;
+            HasKeycharacter2 = true;
             playerInTrigger = true;
         }
 
@@ -97,6 +107,11 @@ public class CharacterController : MonoBehaviour
             score += 30;
             Puntaje.puntos = score;
             Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.tag == "level2")
+        {
+            SceneManager.LoadScene("Nivel2");
         }
 
         //Condición gameover
@@ -124,7 +139,7 @@ public class CharacterController : MonoBehaviour
 
         }
 
-         if (other.gameObject.tag == "Enemy1")
+        if (other.gameObject.tag == "Enemy1")
         {
 
             if (vidaPlayer == 100 || vidaPlayer == 50)
@@ -158,14 +173,16 @@ public class CharacterController : MonoBehaviour
         {
             playerInTrigger = false;
             Destroy(other.gameObject);
-            nivel=nivel+1;
+            nivel = nivel + 1;
+
+
             //Scene escenaActual = SceneManager.GetActiveScene();
             //UnityEditor.EditorApplication.isPlaying = false;
             //score = 0;
             //Puntaje.puntos = score;
             //Cursor.lockState = CursorLockMode.None;
             //Cursor.visible = true;
-            SceneManager.LoadScene("Nivel2");
+            //SceneManager.LoadScene("Nivel2");
             // Destruimos la escena actual
 
 
@@ -199,9 +216,44 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
 
-        //vidaVisual.value = vidaPlayer;
-        visualSlider.GetComponent<Slider>().value = vidaPlayer;
+#if UNITY_ANDROID || UNITY_IOS
+        y = joystick.Horizontal;
+        x = joystick.Vertical;
 
+        transform.Translate(0, 0, x * speed * Time.deltaTime);
+        transform.Rotate(0, y * rotationSpeed * Time.deltaTime, 0);
+
+        //Reproduce sonido de pasos
+        if (y != 0)
+        {
+            Hactivo = true;
+            pasos.Play();
+        }
+        if (x != 0)
+        {
+            Vactivo = true;
+            pasos.Play();
+        }
+
+        if (y != 0)
+        {
+            Hactivo = false;
+            if (Vactivo == false)
+            {
+                pasos.Pause();
+            }
+
+        }
+        if (x != 0)
+        {
+            Vactivo = false;
+            if (Hactivo == false)
+            {
+                pasos.Pause();
+            }
+        }
+#else
+            
         transform.Translate(0, 0, Input.GetAxis("Vertical") * speed * Time.deltaTime);
         transform.Rotate(0, Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime, 0);
 
@@ -234,5 +286,10 @@ public class CharacterController : MonoBehaviour
                 pasos.Pause();
             }
         }
+#endif
+
+        //vidaVisual.value = vidaPlayer;
+        visualSlider.GetComponent<Slider>().value = vidaPlayer;
+
     }
 }

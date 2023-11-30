@@ -38,9 +38,12 @@ public class PuertaController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && playerInTrigger && playerHasKey)
         {
             isOpen = !isOpen;
-            CharacterController.HasKeycharacter = true;
         }
+
     }
+
+
+
 
     void OnGUI()
     {
@@ -51,7 +54,7 @@ public class PuertaController : MonoBehaviour
 
         // Set the text color to red
         GUI.color = Color.red;
-        
+
         if (playerInTrigger)
         {
             string message = "Presiona 'F' para abrir la puerta";
@@ -61,7 +64,7 @@ public class PuertaController : MonoBehaviour
                 message = "Necesitas una llave";
             }
 
-            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 400, 150, 30), message);
+            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 400, 500, 1000), message);
         }
     }
 
