@@ -9,11 +9,34 @@ public class IA_Enemigo : MonoBehaviour
     public float Velocidad;
     public NavMeshAgent IA;
 
+    public Animation Anim;
+    public string animacionCaminar;
+    public string animacionAtacar;
+
+
     // Update is called once per frame
     void Update()
     {
-        IA.speed = Velocidad;
-        IA.SetDestination(Objetivo.position);
 
+        if (linternaController.bandera == true)
+        {
+            IA.speed = Velocidad;
+            IA.SetDestination(Objetivo.position);
+            //Debug.Log("Entro enemigo");
+        }else{
+            IA.SetDestination(Vector3.zero);
+             //Debug.Log("No Entro enemigo");
+        }
+
+        /* if(IA.velocity == Vector3.zero){
+             Anim.CrossFade(animacionAtacar);
+         }else{
+             Anim.CrossFade(animacionCaminar);
+         }*/
     }
+
+    /*public void Ataque(){
+        Objetivo.GetComponent<Codigo_Salud>().RecibirDaño;
+    }*/
+
 }

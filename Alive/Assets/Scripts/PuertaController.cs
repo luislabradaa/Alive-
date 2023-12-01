@@ -35,24 +35,51 @@ public class PuertaController : MonoBehaviour
         }
 
         // Only allow opening the door if player has the key and is in the trigger
-        if (Input.GetKeyDown(KeyCode.F) && playerInTrigger && playerHasKey)
+        #if UNITY_ANDROID || UNITY_IOS
+         if (playerInTrigger && playerHasKey)
         {
             isOpen = !isOpen;
         }
+        #else
+            if (Input.GetKeyDown(KeyCode.F) && playerInTrigger && playerHasKey)
+        {
+            isOpen = !isOpen;
+        }
+        #endif
+
+
+
     }
+
+
+
 
     void OnGUI()
     {
+
+        Font font = Font.CreateDynamicFontFromOSFont("Arial", 30);
+        // Assign the font to the GUI skin
+        GUI.skin.font = font;
+
+        // Set the text color to red
+        GUI.color = Color.red;
+
+        string message;
+
         if (playerInTrigger)
-        {
-            string message = "Press 'F' to open the door";
+        {   
+            #if UNITY_ANDROID || UNITY_IOS
+               message = "";
+            #else
+                message = "Presiona 'F' para abrir la puerta";
+            #endif
 
             if (!playerHasKey)
             {
-                message = "Neceistas una llave";
+                message = "Necesitas una llave";
             }
 
-            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 150, 30), message);
+            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 400, 500, 1000), message);
         }
     }
 

@@ -34,9 +34,9 @@ public class PuertaController2 : MonoBehaviour
         }
 
         // Only allow opening the door if player has the key and is in the trigger
-        if (Input.GetKeyDown(KeyCode.F))
+        if ( CharacterController.HasKeycharacter2)
         {
-            isOpen = !isOpen;
+            isOpen = true;
         }
     }
 
@@ -44,9 +44,25 @@ public class PuertaController2 : MonoBehaviour
     {
         if (playerInTrigger)
         {
-            string message = "Press 'F' to open the door";
+            Font font = Font.CreateDynamicFontFromOSFont("Arial", 30);
+            // Assign the font to the GUI skin
+            GUI.skin.font = font;
 
-            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 100, 150, 30), message);
+            // Set the text color to red
+            GUI.color = Color.red;
+
+            string message;
+            
+            if (CharacterController.HasKeycharacter2 == true)
+            {
+                message = "";
+                
+            }else{
+                message = "NECESITAS LIBERAR A TU AMIGO";
+            }
+            
+
+            GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 400, 500, 1000), message);
         }
     }
 
@@ -55,7 +71,7 @@ public class PuertaController2 : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             playerInTrigger = true;
-            playerHasKey = other.gameObject.GetComponent<CharacterController>().HasKey; // Assuming PlayerController has a HasKey property
+         // Assuming PlayerController has a HasKey property
         }
     }
 

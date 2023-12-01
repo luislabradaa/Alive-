@@ -6,8 +6,15 @@ TagManager:
   tags:
   - Key
   - point
+  - Enemy
+  - Salida
   - point2
   - point3
+  - Key2
+  - personajeSecundario
+  - Terreno
+  - Enemy1
+  - level2
   layers:
   - Default
   - TransparentFX
