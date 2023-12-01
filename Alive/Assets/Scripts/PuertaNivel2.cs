@@ -31,9 +31,9 @@ public class PuertaNivel2 : MonoBehaviour
     {
         defaultRotation = transform.eulerAngles;
         openRotation = new Vector3(defaultRotation.x, defaultRotation.y + doorOpenAngle, defaultRotation.z);
-        client = new MongoClient("mongodb+srv://unity:unity@cluster0.6tl1aef.mongodb.net/?retryWrites=true&w=majority");
-        db = client.GetDatabase("Uniry");
-        collection = db.GetCollection<BsonDocument>("player");
+        //client = new MongoClient("mongodb+srv://unity:unity@cluster0.6tl1aef.mongodb.net/?retryWrites=true&w=majority");
+        //db = client.GetDatabase("Uniry");
+        //collection = db.GetCollection<BsonDocument>("player");
     }
 
     void Update()
@@ -41,8 +41,8 @@ public class PuertaNivel2 : MonoBehaviour
         // Only allow opening the door if player has the key and is in the trigger
         if (Input.GetKeyDown(KeyCode.F) && playerInTrigger && playerHasKey)
         {
-            var document = new BsonDocument { { "Nombre", CharacterController.name }, { "Puntuacion", CharacterController.score } };
-            collection.InsertOne(document);
+            //var document = new BsonDocument { { "Nombre", CharacterController.name }, { "Puntuacion", CharacterController.score } };
+            //collection.InsertOne(document);
             SceneManager.LoadScene("PantallaFinal");
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -64,7 +64,7 @@ public class PuertaNivel2 : MonoBehaviour
 
             if (!playerHasKey)
             {
-                message = "Neceistas una llave";
+                message = "Necesitas una llave";
             }
             else
             {
