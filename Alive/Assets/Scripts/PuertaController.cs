@@ -35,10 +35,19 @@ public class PuertaController : MonoBehaviour
         }
 
         // Only allow opening the door if player has the key and is in the trigger
-        if (Input.GetKeyDown(KeyCode.F) && playerInTrigger && playerHasKey)
+        #if UNITY_ANDROID || UNITY_IOS
+         if (playerInTrigger && playerHasKey)
         {
             isOpen = !isOpen;
         }
+        #else
+            if (Input.GetKeyDown(KeyCode.F) && playerInTrigger && playerHasKey)
+        {
+            isOpen = !isOpen;
+        }
+        #endif
+
+
 
     }
 
@@ -55,9 +64,15 @@ public class PuertaController : MonoBehaviour
         // Set the text color to red
         GUI.color = Color.red;
 
+        string message;
+
         if (playerInTrigger)
-        {
-            string message = "Presiona 'F' para abrir la puerta";
+        {   
+            #if UNITY_ANDROID || UNITY_IOS
+               message = "";
+            #else
+                message = "Presiona 'F' para abrir la puerta";
+            #endif
 
             if (!playerHasKey)
             {

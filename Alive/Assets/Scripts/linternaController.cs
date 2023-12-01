@@ -6,6 +6,8 @@ public class linternaController : MonoBehaviour
 {
     public Light LuzLinterna;
     public static bool bandera;
+
+    bool isEnabled;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,19 @@ public class linternaController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        #if UNITY_ANDROID || UNITY_IOS
+         if(ControlGeneral.valor){
+            if(LuzLinterna.enabled == true){
+                LuzLinterna.enabled = false;
+                Debug.Log("Esta apagad");
+                bandera=false;
+            }else if(LuzLinterna.enabled == false){
+                LuzLinterna.enabled = true;
+                Debug.Log("Esta prendida");
+                bandera=true;
+            }
+        }
+        #else
         if(Input.GetButtonDown("Linterna")){
             if(LuzLinterna.enabled == true){
                 LuzLinterna.enabled = false;
@@ -27,5 +42,6 @@ public class linternaController : MonoBehaviour
                 bandera=true;
             }
         }
+        #endif
     }
 }

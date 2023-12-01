@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class ControlGeneral : MonoBehaviour
 {
+    // Start is called before the first frame updatepublic static bool bandera;
+
+    public bool isEnabled;
+
+    public static bool valor;
     // Start is called before the first frame update
-    public GameObject myGameObject;
-
-    public bool isVisible;
-
     void Start()
     {
-        // Activamos el GameObject si isVisible es true
-        myGameObject.SetActive(isVisible);
+        isEnabled = true;
+        valor = isEnabled;
+    }
+
+    public void prender()
+    {
+        isEnabled = !isEnabled;
+        valor = isEnabled;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

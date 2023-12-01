@@ -83,7 +83,7 @@ public class CharacterController : MonoBehaviour
 
         if (other.gameObject.tag == "Key2")
         {
-            HasKeycharacter =true;
+            HasKeycharacter = true;
             HasKeycharacter2 = true;
             playerInTrigger = true;
         }
@@ -130,11 +130,20 @@ public class CharacterController : MonoBehaviour
             if (vidaPlayer == 0)
             {
                 Debug.Log("Muerte maniqui");
+
+                if (nivel == 2)
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                }
+                else
+                {
+                    score = 0;
+                    Puntaje.puntos = score;
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                }
                 SceneManager.LoadScene("FinalJuego");
-                score = 0;
-                Puntaje.puntos = score;
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
             }
 
         }
@@ -150,11 +159,19 @@ public class CharacterController : MonoBehaviour
             if (vidaPlayer == 0)
             {
                 Debug.Log("Muerte payaso");
+              if (nivel == 2)
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                }
+                else
+                {
+                    score = 0;
+                    Puntaje.puntos = score;
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                }
                 SceneManager.LoadScene("FinalJuego");
-                score = 0;
-                Puntaje.puntos = score;
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
             }
 
         }
@@ -174,23 +191,6 @@ public class CharacterController : MonoBehaviour
             playerInTrigger = false;
             Destroy(other.gameObject);
             nivel = nivel + 1;
-
-
-            //Scene escenaActual = SceneManager.GetActiveScene();
-            //UnityEditor.EditorApplication.isPlaying = false;
-            //score = 0;
-            //Puntaje.puntos = score;
-            //Cursor.lockState = CursorLockMode.None;
-            //Cursor.visible = true;
-            //SceneManager.LoadScene("Nivel2");
-            // Destruimos la escena actual
-
-
-            // Cargamos la nueva escena
-            //SceneManager.LoadScene("FinalJuego");
-            //SceneManager.LoadScene("FinalJuego", LoadSceneMode.Single);
-            //var document = new BsonDocument { { "Nombre", name }, { "Puntuacion", score } };
-            //collection.InsertOne(document);
         }
     }
 
