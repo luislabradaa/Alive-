@@ -27,6 +27,10 @@ public class CharacterController : MonoBehaviour
 
     public static String name;
     public static int score = 0;
+
+    public static int score2;
+
+    public static int scoreR;
     private bool playerInTrigger;
 
     private Rigidbody playerRb;
@@ -78,6 +82,7 @@ public class CharacterController : MonoBehaviour
             HasKey = true;
             nivel = 1;
             playerInTrigger = true;
+            score2 = score;
             playerHasKey = true;
         }
 
@@ -85,28 +90,62 @@ public class CharacterController : MonoBehaviour
         {
             HasKeycharacter = true;
             HasKeycharacter2 = true;
+            HasKey = true;
             playerInTrigger = true;
+        }
+
+        if (other.gameObject.tag == "level2")
+        {
+           scoreR = score;
         }
 
         if (other.gameObject.tag == "point")
         {
-            score += 10;
-            Puntaje.puntos = score;
-            Destroy(other.gameObject);
+            if (nivel == 2)
+            {
+                score2 += 10;
+                Puntaje.puntos = score2;
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                score += 10;
+                Puntaje.puntos = score;
+                Destroy(other.gameObject);
+            }
+
         }
 
         if (other.gameObject.tag == "point2")
         {
-            score += 20;
-            Puntaje.puntos = score;
-            Destroy(other.gameObject);
+             if (nivel == 2)
+            {
+                score2 += 20;
+                Puntaje.puntos = score2;
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                score += 20;
+                Puntaje.puntos = score;
+                Destroy(other.gameObject);
+            }
         }
 
         if (other.gameObject.tag == "point3")
         {
-            score += 30;
-            Puntaje.puntos = score;
-            Destroy(other.gameObject);
+             if (nivel == 2)
+            {
+                score2 += 30;
+                Puntaje.puntos = score2;
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                score += 30;
+                Puntaje.puntos = score;
+                Destroy(other.gameObject);
+            }
         }
 
         if (other.gameObject.tag == "level2")
@@ -138,8 +177,7 @@ public class CharacterController : MonoBehaviour
                 }
                 else
                 {
-                    score = 0;
-                    Puntaje.puntos = score;
+                    Puntaje.puntos = scoreR;
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                 }
@@ -159,15 +197,15 @@ public class CharacterController : MonoBehaviour
             if (vidaPlayer == 0)
             {
                 Debug.Log("Muerte payaso");
-              if (nivel == 2)
+                if (nivel == 2)
                 {
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                 }
                 else
                 {
-                    score = 0;
-                    Puntaje.puntos = score;
+                    score2 = scoreR;
+                    Puntaje.puntos = score2;
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                 }
@@ -253,7 +291,7 @@ public class CharacterController : MonoBehaviour
             }
         }
 #else
-            
+
         transform.Translate(0, 0, Input.GetAxis("Vertical") * speed * Time.deltaTime);
         transform.Rotate(0, Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime, 0);
 
